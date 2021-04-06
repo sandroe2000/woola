@@ -1,0 +1,10 @@
+{
+    "nav": {
+        "id": "entityMannager",
+        "icon": "fa fa-sitemap"
+    },
+    "module": {
+        "name": "EntityMannager",
+        "path": "/app/plugin/EntityMannager/EntityMannager.js"
+    }
+}

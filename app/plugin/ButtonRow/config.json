@@ -1,0 +1,10 @@
+{
+    "subMenu": {
+        "id": "btnRow",
+        "icon": "fa fa-th-list"
+    },
+    "module": {
+        "name": "ButtonRow",
+        "path": "/app/plugin/ButtonRow/ButtonRow.js"
+    }
+}

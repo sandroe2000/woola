@@ -1,0 +1,16 @@
+{
+    "plugins": [
+        {
+            "config": "/app/plugin/FileExplorer/config.json"
+        },
+        {
+            "config": "/app/plugin/EntityMannager/config.json"
+        },
+        {
+            "config": "/app/plugin/ButtonRow/config.json"
+        },
+        {
+            "config": "/app/plugin/ButtonCol/config.json"
+        }
+    ]
+}

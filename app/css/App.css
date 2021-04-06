@@ -1,0 +1,309 @@
+:root {
+    --fontColor: #212529;
+    --fontColorDisabled: #686868;
+    --bgBody: #B0B0B0;
+    --bgPanel: #EDEDED;
+    --bgMain: #DDDDDD;
+    --btHover: #F7F7F7;
+    --bgWrite: #FFFFFF;
+    --tabHighlight: #0D6EFD;
+}
+
+html,
+body {
+    height: 100vh;
+    width: 100vw;
+    margin: 0px;
+    padding: 0px;
+    background-color: var(--bgBody);
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    overflow: hidden;
+    color: var(--fontColor);
+}
+
+.navbar {
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.navbar-brand {
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.navbar-brand strong {
+    color: var(--fontColorDisabled) !important;
+}
+
+.bg-light {
+    background-color: var(--bgPanel) !important;
+}
+
+header {
+    background-color: var(--bgPanel);
+    margin-left: 1px;
+    /*border-top: 1px solid var(--bgWrite);
+    border-left: 1px solid var(--bgWrite);*/
+    height: 47px;
+    overflow: hidden;
+}
+
+main {
+    display: flex;
+    flex: auto;
+    justify-content: flex-start;
+
+    width: calc(100vw);
+    height: calc(100vh - 68px);
+}
+
+main nav {
+    display: flex;
+    flex-shrink: 0;
+    flex-direction: column;
+    align-content: center;
+    background-color: var(--bgPanel);
+    width: 38px !important;
+    margin-top: 1px;
+    margin-left: 1px;
+    /*border-top: 1px solid var(--bgWrite);
+    border-left: 1px solid var(--bgWrite);*/
+    overflow: hidden;
+    border-right: 1px solid var(--bgBody);
+    padding-left: 2px;
+}
+
+main nav button {
+    background-color: var(--bgPanel);
+    border-radius: 3px;
+    border: 1px solid transparent;
+    margin: 3px 0px 0px 0px;
+    width: 32px;
+    height: 32px;
+}
+
+main section .menu-html {
+    padding-top: 2px;
+}
+
+main section .menu-html button {
+    background-color: var(--bgPanel);
+    border-radius: 3px;
+    border: 1px solid transparent;
+    margin: 0px 0px 0px 5px;
+    width: 32px;
+    height: 32px;
+}
+
+main nav button:hover,
+main section .menu-html button:hover {
+    border-color: var(--bgBody);
+    background-color: var(--btHover);
+}
+
+main aside {
+    /*display: flex;*/
+    flex: auto;
+    justify-content: flex-start;
+
+    background-color: var(--bgMain);
+    margin-top: 1px;
+    margin-right: 1px;
+    /*border-top: 1px solid var(--bgWrite);
+    border-left: 1px solid var(--bgWrite);*/
+    width: 350px;
+}
+
+main section {
+    background-color: var(--bgMain);
+    margin-top: 1px;
+    /*margin-left: 1px;
+    border-top: 1px solid var(--bgWrite);
+    border-left: 1px solid var(--bgWrite);*/
+    width: calc(100vw - 30px);
+    overflow-y: scroll;
+}
+
+main aside .nav-tabs,
+main section .nav-tabs {
+    border-bottom: 1px solid var(--bgBody);
+}
+
+main aside .nav-tabs .nav-item.show .nav-link,
+main aside .nav-tabs .nav-link.active,
+main section .nav-tabs .nav-item.show .nav-link,
+main section .nav-tabs .nav-link.active {
+    background-color: var(--bgPanel);
+    border-color: var(--bgBody) var(--bgBody) var(--bgPanel) transparent;
+    border-top: 1px solid var(--tabHighlight) !important;
+    color: var(--fontColor);
+}
+
+main aside .nav-tabs .nav-link:hover,
+main section .nav-tabs .nav-link:hover {
+    background-color: var(--bgPanel);
+    border-color: var(--bgBody) var(--bgBody) var(--bgBody);
+}
+
+main aside .nav-tabs .nav-link.active:hover,
+main section .nav-tabs .nav-link.active:hover {
+    border-color: var(--bgBody) var(--bgBody) var(--bgPanel);
+}
+
+main aside .nav-tabs .nav-link,
+main section .nav-tabs .nav-link {
+    margin-bottom: -1px;
+    background: 0 0;
+    border: 1px solid transparent;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    /*border-top: 1px solid #dee2e6 !important;*/
+    border-right: 1px solid var(--bgBody);
+    color: var(--fontColor);
+}
+
+main aside .nav-item button,
+main section .nav-item button {
+    display: flex;
+}
+
+main aside .nav-item button .close,
+main section .nav-item button .close {
+    color: var(--fontColor);
+}
+
+main aside .nav-item button .close:hover,
+main section .nav-item button .close:hover {
+    color: var(--fontColor);
+}
+
+main aside .tab-content,
+main section .tab-content {
+    background-color: var(--bgPanel);
+    overflow: hidden;
+}
+
+main aside .tab-content>.tab-pane,
+main section .tab-content>.tab-pane {
+    height: calc(100vh - 107px);
+    overflow-y: hidden;
+    /*border-left: 1px solid var(--bgBody);*/
+}
+
+main aside .tab-content .tab-pane div {
+    height: calc(100vh - 117px);
+    overflow-y: auto;
+    margin: 5px;
+    background-color: var(--bgWrite);
+    border: 1px solid var(--bgBody);
+}
+
+main section .tab-content .tab-pane .menu-html {
+    display: flex;
+    height: 35px !important;
+    background-color: var(--bgPanel);
+    overflow: hidden;
+}
+
+main section .tab-content .tab-pane .menu-html button {
+    cursor: grab;
+}
+
+footer {
+    display: flex;
+    flex-shrink: 0;
+    justify-content: flex-start;
+
+    background-color: var(--bgPanel);
+    margin-top: 1px;
+    margin-left: 1px;
+    /*border-top: 1px solid var(--bgWrite);
+    border-left: 1px solid var(--bgWrite);*/
+    height: 20px;
+    overflow: hidden;
+}
+
+button:focus,
+.btn:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.show {
+    display: block;
+}
+
+.hide {
+    display: none;
+}
+
+/*-- SPLIT.JS ------------------------------*/
+.ww-split {
+    height: calc(100vh - 142px);
+}
+
+.ww-split-top {
+    overflow-y: auto;
+    margin: 0px;
+    background-color: var(--bgWrite);
+    border: 1px solid transparent;
+    border-color: var(--bgBody) transparent;
+    width: 100%;
+    height: calc(100vh - 137px);
+}
+
+.ww-split-bottom {
+    display: flex;
+    overflow: hidden;
+    margin: 0px;
+    background-color: var(--bgWrite);
+    /*border: 1px solid transparent;*/
+    border-top: 1px solid var(--bgBody);
+    width: 100%;
+    height: calc(100vh - 137px);
+}
+
+.ww-full-panel {
+    display: flex;
+    width: 100%;
+    height: calc(100vh - 137px);
+    overflow: none;
+    margin: 0px;
+    background-color: var(--bgWrite);
+    /*border: 1px solid transparent;*/
+    border-top: 1px solid var(--bgBody);
+
+}
+
+.gutter {
+    background-color: var(--bgPanel);
+    background-repeat: no-repeat;
+    background-position: 50%;
+}
+
+.gutter.gutter-vertical {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAFAQMAAABo7865AAAABlBMVEVHcEzMzMzyAv2sAAAAAXRSTlMAQObYZgAAABBJREFUeF5jOAMEEAIEEFwAn3kMwcB6I2AAAAAASUVORK5CYII=');
+    cursor: row-resize;
+}
+
+.fa {
+    color: var(--fontColor);
+}
+
+.navbar-light .navbar-nav .nav-link.active,
+navbar-light .navbar-nav .show>.nav-link {
+    color: var(--fontColor);
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: var(--fontColor);
+}
+
+.navbar-light .navbar-nav .nav-link.disabled {
+    color: var(--fontColorDisabled);
+}
+
+.btn {
+    padding: 0px;
+}

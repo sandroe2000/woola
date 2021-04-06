@@ -1,0 +1,21 @@
+{
+  "name": "woola",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "http-server -c-1 -p 8081"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "http-server": "^0.12.3"
+  },
+  "description": "",
+  "dependencies": {
+    "bootstrap": "^5.0.0-beta2",
+    "fontawesome-4.7": "^4.7.0",
+    "monaco-editor": "^0.23.0",
+    "split.js": "^1.6.2"
+  }
+}

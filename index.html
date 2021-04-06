@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="pt-br" translate="no">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Venddor CSS -->
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/node_modules/fontawesome-4.7/css/font-awesome.css" />
+
+    <!-- App CSS -->
+    <link rel="stylesheet" href="/app/css/App.css" />
+
+    <!-- Favcicon -->
+    <link rel="icon" href="/assets/images/favicon.png" type="image/png">
+
+    <title>WoolaWeaver</title>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-sm navbar-light bg-light" style="height: 47px;">
+        <div class="container-fluid" style="padding-left: 7px;">
+            <a class="navbar-brand" href="#"><strong>WoolaWeaver</strong></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#wwNavbarSupportedContent" aria-controls="wwNavbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="wwNavbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link active dropdown-toggle" href="#" id="wwNavbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            File
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="wwNavbarDropdown">
+                            <li><a class="dropdown-item" href="#" id="wwFileMenuNewHtml">new HTML</a></li>
+                            <li><a class="dropdown-item" href="#" id="wwFileMenuNewJs">new JS</a></li>
+                            <li><a class="dropdown-item" href="#" id="wwFileMenuNewCss">new CSS</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#" id="wwFileMenuSave">Save</a></li>
+                            <li><a class="dropdown-item" href="#" id="wwFileMenuSaveAs">Save As</a></li>
+                            <li><a class="dropdown-item" href="#" id="wwFileMenuSaveALL">Save All</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#" id="wwFileMenuClose">Close</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Edit</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="wwNavbarDropdownView" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            View
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="wwNavbarDropdownView" style="z-index: 99998;">
+                            <li class="dropdown-item">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="wwViewShowRowSpaces" />
+                                    <label class="form-check-label" for="wwViewShowRowSpaces">Show row spaces</label>
+                                </div>
+                            </li>
+                            <li class="dropdown-item">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="wwViewShowRowBorders" />
+                                    <label class="form-check-label" for="wwViewShowRowBorders">Show row borders</label>
+                                </div>
+                            </li>
+                            <li class="dropdown-item">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="wwViewShowColSpaces" />
+                                    <label class="form-check-label" for="wwViewShowColSpaces">Show column spaces</label>
+                                </div>
+                            </li>
+                            <li class="dropdown-item">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="wwViewShowColBorders" />
+                                    <label class="form-check-label" for="wwViewShowColBorders">Show column
+                                        borders</label>
+                                </div>
+                            </li>
+                            <li class="dropdown-item">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="wwViewDarkMode" />
+                                    <label class="form-check-label" for="wwViewDarkMode">Dark Mode</label>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Help</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <nav>
+            <button id="btnToggleAside">
+                <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+            </button>
+        </nav>
+        <aside></aside>
+        <section></section>
+    </main>
+
+    <footer></footer>
+
+    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/node_modules/monaco-editor/min/vs/loader.js"></script>
+    <script>
+        require.config({
+            paths: {
+                vs: '/node_modules/monaco-editor/min/vs'
+            }
+        });
+    </script>
+
+    <!-- Module JavaScript -->
+    <script type="Module" src="/app/js/App.js"></script>
+
+</body>
+
+</html>

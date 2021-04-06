@@ -1,0 +1,10 @@
+{
+    "subMenu": {
+        "id": "btnCol",
+        "icon": "fa fa-columns"
+    },
+    "module": {
+        "name": "ButtonCol",
+        "path": "/app/plugin/ButtonCol/ButtonCol.js"
+    }
+}
