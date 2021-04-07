@@ -120,7 +120,7 @@ export class App {
                 document.querySelector('main nav').appendChild(btn);
 
                 module = await import(data.module.path);
-                instance = new module[data.module.name];
+                instance = new module[data.module.name](this);
 
                 //SET EVENT CLICK
                 document.querySelector(`#${data.nav.id}Nav`).addEventListener('click', (event) => {

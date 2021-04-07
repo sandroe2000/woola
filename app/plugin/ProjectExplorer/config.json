@@ -1,0 +1,10 @@
+{
+    "nav": {
+        "id": "projectExplorer",
+        "icon": "fa fa-hdd-o"
+    },
+    "module": {
+        "name": "ProjectExplorer",
+        "path": "/app/plugin/ProjectExplorer/ProjectExplorer.js"
+    }
+}

@@ -1,7 +1,7 @@
 {
     "plugins": [
         {
-            "config": "/app/plugin/FileExplorer/config.json"
+            "config": "/app/plugin/ProjectExplorer/config.json"
         },
         {
             "config": "/app/plugin/EntityMannager/config.json"

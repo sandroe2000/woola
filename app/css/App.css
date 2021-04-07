@@ -191,7 +191,7 @@ main section .tab-content>.tab-pane {
     /*border-left: 1px solid var(--bgBody);*/
 }
 
-main aside .tab-content .tab-pane div {
+main aside .tab-content .tab-pane>div {
     height: calc(100vh - 117px);
     overflow-y: auto;
     margin: 5px;

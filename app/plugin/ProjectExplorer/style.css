@@ -1,0 +1,49 @@
+#projectExplorerNavPanel {
+    display: flex;
+    height: 30px;
+    width: 282px;
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+    border-bottom: 1px solid var(--bgBody);
+    background-color: var(--bgPanel);
+}
+
+#projectExplorerNavPanel div:nth-of-type(1) {
+    flex-grow: 9;
+}
+
+#projectExplorerNavPanel div:nth-of-type(2) {
+    display: flex;
+    flex-grow: 1;
+    justify-content: flex-end;
+}
+
+.btn-project-explorer {
+    background-color: var(--bgPanel);
+    border: 1px solid transparent;
+    border-radius: 3px;
+    padding: 0px;
+    margin: 2px 4px 0px 4px;
+    width: 25px;
+    height: 25px;
+}
+
+.btn-project-explorer:hover {
+    border-color: var(--bgBody);
+    background-color: var(--btHover);
+}
+
+#projectExplorerContainer {
+    padding: 4px;
+}
+
+.card {
+    background-color: var(--bgPanel);
+    border-color: var(--bgBody);
+}
+
+.card:hover {
+    border-color: var(--bgBody);
+    background-color: var(--btHover);
+}
