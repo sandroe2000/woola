@@ -9,6 +9,7 @@
     <!-- Venddor CSS -->
     <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/node_modules/fontawesome-4.7/css/font-awesome.css" />
+    <link rel="stylesheet" href="/assets/vendor/jquery.bs4-scrolling-tabs/jquery.bs4-scrolling-tabs.css" />
 
     <!-- App CSS -->
     <link rel="stylesheet" href="/app/plugin/ProjectExplorer/style.css" />
@@ -22,14 +23,9 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-sm navbar-light bg-light" style="height: 47px;">
+    <nav class="navbar navbar-expand navbar-light bg-light" style="height: 47px;">
         <div class="container-fluid" style="padding-left: 7px;">
             <a class="navbar-brand" href="#"><strong>WoolaWeaver</strong></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#wwNavbarSupportedContent" aria-controls="wwNavbarSupportedContent"
-                aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
             <div class="collapse navbar-collapse" id="wwNavbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item dropdown">
@@ -115,7 +111,9 @@
 
     <footer></footer>
 
-    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/vendor/jquery/jquery-1.12.0.min.js"></script>
+    <script src="/assets/vendor/jquery.bs4-scrolling-tabs/jquery.bs4-scrolling-tabs.js"></script>
+    <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/node_modules/monaco-editor/min/vs/loader.js"></script>
     <script>
         require.config({

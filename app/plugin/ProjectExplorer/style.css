@@ -47,3 +47,18 @@
     border-color: var(--bgBody);
     background-color: var(--btHover);
 }
+
+.dropdown-menu {
+    background-color: var(--bgWrite);
+    border-radius: 0px;
+}
+
+.dropdown-item {
+    color: var(--fontColor) !important;
+}
+
+.dropdown-item:focus,
+.dropdown-item:hover {
+    color: var(--fontColor) !important;
+    background-color: var(--bgPanel);
+}

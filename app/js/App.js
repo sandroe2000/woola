@@ -2,7 +2,6 @@ import Split from '../../node_modules/split.js/dist/split.es.js';
 import { HttpFetch } from './core/HttpFetch.js';
 import { Util } from './core/Util.js';
 
-
 export class App {
 
     constructor() {
@@ -12,6 +11,8 @@ export class App {
         this.wwHistoryCounter = 0;
         this.wwEditor = [];
         this.wwEditorTheme = 'vs';
+        this.firstFile = true;
+        this.scrollingTabs = null;
         this.events();
         this.init();
     }
@@ -21,6 +22,7 @@ export class App {
         document.querySelector('#btnToggleAside').addEventListener('click', (event) => {
             document.querySelector('aside').classList.toggle('hide');
             document.querySelector('#btnToggleAside i').classList.toggle('fa-angle-double-right');
+            this.fixResize();
         }, false);
         //-> SECTION
         document.querySelector('#wwFileMenuNewHtml').addEventListener('click', (event) => {
@@ -36,6 +38,11 @@ export class App {
         document.querySelector('#wwFileMenuNewCss').addEventListener('click', (event) => {
             let file = { id: `css-${this.util.uuidv4()}`, extension: 'css', title: 'Untitled.css' };
             this.wwSetFile(file);
+        }, false);
+
+        document.querySelector('#wwFileMenuClose').addEventListener('click', (event) => {
+            let id = document.querySelector('ul#sectionTab.nav.nav-tabs .nav-link.active').getAttribute('aria-controls');
+            this.wwCloseTab(id);
         }, false);
 
         //MENU -> VIEW
@@ -66,7 +73,7 @@ export class App {
         root.style.setProperty('--bgPanel', '#323232');
         root.style.setProperty('--bgMain', '#2D2D2D');
         root.style.setProperty('--btHover', '#3A3A3A');
-        root.style.setProperty('--bgWrite', '#707070');
+        root.style.setProperty('--bgWrite', '#3C3C3C');
 
         this.wwEditorTheme = 'vs-dark';
         if (typeof monaco != "undefined") monaco.editor.setTheme(this.wwEditorTheme);
@@ -76,8 +83,8 @@ export class App {
 
         let root = document.documentElement;
         root.style.setProperty('--fontColor', '#212529');
-        root.style.setProperty('--bgBody', '#B0B0B0');
-        root.style.setProperty('--bgPanel', '#EDEDED');
+        root.style.setProperty('--bgBody', '#D0D0D0');
+        root.style.setProperty('--bgPanel', '#F3F3F3');
         root.style.setProperty('--bgMain', '#F7F7F7');
         root.style.setProperty('--btHover', '#F7F7F7');
         root.style.setProperty('--bgWrite', '#FFFFFF');
@@ -89,8 +96,8 @@ export class App {
     async wwRender() {
 
         //return await this.http.getTemplate('/app/template/Section.html');
-        return `<div>
-                   <ul class="nav nav-tabs" id="sectionTab" role="tablist"></ul>
+        return `<div>                    
+                    <ul class="nav nav-tabs tab-list" id="sectionTab" role="tablist"></ul>                    
                     <div class="tab-content" id="sectionTabContent"></div>
                 </div>`;
     }
@@ -185,7 +192,6 @@ export class App {
 
     async wwSetFile(file) {
 
-
         let wwPanelContent = `<div class="ww-full-panel" id="${file.id}Code"></div>`;
 
         if (file.extension == 'html') {
@@ -204,14 +210,19 @@ export class App {
                         </button>
                     </li>`;
         let wwPane = `<div class="tab-pane fade" id="${file.id}" role="tabpanel" aria-labelledby="${file.id}-tab">
-                        <div class="menu-html">
-                            ${await this.wwGetSubMenu(file)}
+                        <div class="menu-html">                            
+                            ${await this.wwGetSubMenu(file)}                            
                         </div>                        
                         ${wwPanelContent}                        
                     </div>`;
 
-        document.querySelector('#sectionTab').insertAdjacentHTML("beforeend", wwTab);
-        document.querySelector('#sectionTabContent').insertAdjacentHTML("beforeend", wwPane);
+        document.querySelector('#sectionTab').insertAdjacentHTML("afterbegin", wwTab);
+        document.querySelector('#sectionTabContent').insertAdjacentHTML("afterbegin", wwPane);
+
+        //-> SCROLL NAV-TAB
+        //-> COLATERAL -> REMOVE OS EVENTOS DAS TAB E FILHOS
+        $('.nav-tabs.tab-list').scrollingTabs('destroy');
+        $('.nav-tabs.tab-list').scrollingTabs();
 
         if (file.extension == 'html') {
             await this.wwSetSplitPanel(file);
@@ -219,30 +230,36 @@ export class App {
 
         this.wwAddTabHistory(`${file.id}-tab`);
 
+        document.querySelectorAll('#sectionTab li button').forEach(element => {
+
+            let id = element.getAttribute('id');
+
+            element.addEventListener('mouseover', (event) => {
+                this.showTabCloseIcon(document.querySelector(`#${id} div.close`));
+            }, false);
+            element.addEventListener('mouseout', (event) => {
+                this.hideTabCloseIcon(document.querySelector(`#${id} div.close`));
+            }, false);
+
+            element.addEventListener('click', (event) => {
+                event.preventDefault();
+                this.wwSetTabHistory(id);
+                event.stopPropagation();
+            }, false);
+
+            document.querySelector(`#${id} .close`).addEventListener('click', async (event) => {
+                //TODO: VERIFY LAST CHANGE HAS SAVED
+                event.preventDefault();
+                event.stopPropagation();
+                this.wwCloseTab(element.getAttribute('aria-controls'));
+            }, false);
+
+        });
+
         //-> THIS EVENT IS FIRED ONLY ONE TIME, THEN IS REMOVED -> { once: true }
         document.querySelector(`#${file.id}-tab`).addEventListener('shown.bs.tab', async (event) => {
             this.wwSetMonacoEditor(`#${file.id}Code`, file.extension, file.content);
         }, { once: true });
-
-        document.querySelector(`#${file.id}-tab`).addEventListener('mouseover', (event) => {
-            this.showTabCloseIcon(document.querySelector(`#${file.id}-tab div.close`));
-        }, false);
-        document.querySelector(`#${file.id}-tab`).addEventListener('mouseout', (event) => {
-            this.hideTabCloseIcon(document.querySelector(`#${file.id}-tab div.close`));
-        }, false);
-
-        document.querySelector(`#${file.id}-tab`).addEventListener('click', (event) => {
-            event.preventDefault();
-            this.wwSetTabHistory(`${file.id}-tab`);
-            event.stopPropagation();
-        }, false);
-
-        document.querySelector(`#${file.id}-tab .close`).addEventListener('click', async (event) => {
-            //TODO: VERIFY LAST CHANGE HAS SAVED
-            event.preventDefault();
-            event.stopPropagation();
-            this.wwCloseTab(file.id);
-        }, false);
 
         document.querySelector(`#${file.id}-tab`).click();
     }
@@ -273,12 +290,13 @@ export class App {
         document.querySelector('#sectionTab').removeChild(document.querySelector(`#${id}-li`));
         document.querySelector('#sectionTabContent').removeChild(document.querySelector(`#${id}`));
         this.wwRemoveTabHistory(`${id}-tab`);
+        $('.nav-tabs.tab-list').scrollingTabs('scrollToActiveTab');
     }
 
     //LOAD HTML DRAG N DROP PLUGIN
     async wwGetSubMenu(file) {
 
-        let retorno = '';
+        let retorno = '<div class="drag-me"></div>';
 
         if (file.extension == 'html') {
 
@@ -343,6 +361,7 @@ export class App {
 
         let loader = await this.http.getData('/app/plugin/loader.json');
         let container = document.createElement('div');
+        container.setAttribute('class', 'drag-me');
 
         for (let plugin of loader.plugins) {
 
@@ -372,6 +391,10 @@ export class App {
         }
 
         return container.outerHTML;
+    }
+
+    fixResize() {
+        $('.nav-tabs.tab-list').scrollingTabs('refresh');
     }
 }
 

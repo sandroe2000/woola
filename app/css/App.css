@@ -1,8 +1,8 @@
 :root {
     --fontColor: #212529;
     --fontColorDisabled: #686868;
-    --bgBody: #B0B0B0;
-    --bgPanel: #EDEDED;
+    --bgBody: #D0D0D0;
+    --bgPanel: #F3F3F3;
     --bgMain: #DDDDDD;
     --btHover: #F7F7F7;
     --bgWrite: #FFFFFF;
@@ -84,7 +84,18 @@ main nav button {
 }
 
 main section .menu-html {
+    display: flex;
     padding-top: 2px;
+}
+
+main section div:nth-of-type(1) {
+    flex-grow: 10;
+}
+
+main section div:nth-of-type(0.5) {
+    display: flex;
+    flex-grow: 1;
+    justify-content: flex-end;
 }
 
 main section .menu-html button {
@@ -186,13 +197,13 @@ main section .tab-content {
 
 main aside .tab-content>.tab-pane,
 main section .tab-content>.tab-pane {
-    height: calc(100vh - 107px);
+    height: calc(100vh - 106px);
     overflow-y: hidden;
     /*border-left: 1px solid var(--bgBody);*/
 }
 
 main aside .tab-content .tab-pane>div {
-    height: calc(100vh - 117px);
+    height: calc(100vh - 116px);
     overflow-y: auto;
     margin: 5px;
     background-color: var(--bgWrite);
@@ -206,7 +217,7 @@ main section .tab-content .tab-pane .menu-html {
     overflow: hidden;
 }
 
-main section .tab-content .tab-pane .menu-html button {
+main section .tab-content .tab-pane .menu-html div.drag-me button {
     cursor: grab;
 }
 
