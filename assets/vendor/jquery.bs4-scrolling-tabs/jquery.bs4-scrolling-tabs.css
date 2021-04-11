@@ -43,7 +43,7 @@
 }
 
 .scrtabs-tab-scroll-arrow {
-  border: 1px solid #dddddd;
+  border: 1px solid transparent;
   border-top: none;
   cursor: pointer;
   display: none;
@@ -53,10 +53,11 @@
   padding-left: 0.5em;
   padding-top: 1.3em;
   width: 20px;
+  border-bottom: 1px solid var(--bgBody);
 }
 
 .scrtabs-tab-scroll-arrow:hover {
-  background-color: #eeeeee;
+  background-color: var(--btHover);
 }
 
 .scrtabs-tab-scroll-arrow>span {
@@ -73,12 +74,17 @@
   border-bottom-color: #0056b3;
 }
 
+.scrtabs-tab-scroll-arrow-left {
+  border-right: 1px solid var(--bgBody);
+}
+
 .scrtabs-tab-scroll-arrow-left>span {
   transform: rotate(135deg);
 }
 
 .scrtabs-tab-scroll-arrow-right {
   padding-left: 0.4em;
+  border-left: 1px solid var(--bgBody);
 }
 
 .scrtabs-tab-scroll-arrow,

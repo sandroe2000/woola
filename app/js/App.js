@@ -22,7 +22,7 @@ export class App {
         document.querySelector('#btnToggleAside').addEventListener('click', (event) => {
             document.querySelector('aside').classList.toggle('hide');
             document.querySelector('#btnToggleAside i').classList.toggle('fa-angle-double-right');
-            this.fixResize();
+            this.srollTabRisizeActiveFocus();
         }, false);
         //-> SECTION
         document.querySelector('#wwFileMenuNewHtml').addEventListener('click', (event) => {
@@ -221,8 +221,7 @@ export class App {
 
         //-> SCROLL NAV-TAB
         //-> COLATERAL -> REMOVE OS EVENTOS DAS TAB E FILHOS
-        $('.nav-tabs.tab-list').scrollingTabs('destroy');
-        $('.nav-tabs.tab-list').scrollingTabs();
+        this.srollTabDestroyCreate();
 
         if (file.extension == 'html') {
             await this.wwSetSplitPanel(file);
@@ -322,7 +321,7 @@ export class App {
     }
 
     wwSetTabHistory(id) {
-
+        this.srollTabRisizeActiveFocus();
         this.wwTabHistory.forEach(element => {
             if (element.id == id) {
                 element.counter = ++this.wwHistoryCounter;
@@ -393,7 +392,12 @@ export class App {
         return container.outerHTML;
     }
 
-    fixResize() {
+    srollTabDestroyCreate() {
+        $('.nav-tabs.tab-list').scrollingTabs('destroy');
+        $('.nav-tabs.tab-list').scrollingTabs();
+    }
+
+    srollTabRisizeActiveFocus() {
         $('.nav-tabs.tab-list').scrollingTabs('refresh');
     }
 }
